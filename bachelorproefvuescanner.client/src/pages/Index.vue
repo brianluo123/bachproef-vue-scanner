@@ -1,10 +1,5 @@
-{
-  // This file allows you to configure ESLint according to your project's needs, so that you
-  // can control the strictness of the linter, the plugins to use, and more.
+<template>
+    <h1>Thimble</h1>
 
-  // For more information about configuring ESLint, visit https://eslint.org/docs/user-guide/configuring/
-
-  "root": true,
-  "extends": "eslint:recommended",
-  "rules": {}
-}
+    <p>Welcome to the scanning application Thimble!</p>
+</template>
