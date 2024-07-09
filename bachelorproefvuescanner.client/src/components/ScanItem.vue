@@ -1,10 +1,13 @@
-{
-  // This file allows you to configure ESLint according to your project's needs, so that you
-  // can control the strictness of the linter, the plugins to use, and more.
+<template>
+  <tr>
+    <td>{{ props.scan.barcode }}</td>
+    <td>{{ props.scan.destination }}</td>
+    <td>{{ props.scan.zone }}</td>
+  </tr>
+</template>
 
-  // For more information about configuring ESLint, visit https://eslint.org/docs/user-guide/configuring/
+<script setup lang="ts">
+import Scan from '@/models/Scan';
 
-  "root": true,
-  "extends": "eslint:recommended",
-  "rules": {}
-}
+const props = defineProps<{ scan: Scan; }>();
+</script>
