@@ -9,7 +9,7 @@
             <div class="input-group">
                 <input type="text" v-model="scan.barcode" class="form-control" />
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" @onclick="OpenModal">Scan</button>
+                    <button class="btn btn-outline-secondary" type="button" @click="openModal">Scan</button>
                 </div>
             </div>
         </div>
@@ -58,33 +58,75 @@
       </tbody>
   </table>
 
+  <div v-if="showModal" class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Scan a barcode</h5>
+                <button type="button" class="close" @click="closeModal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <Scanner @decode="receivedBarcodeText" />
+            </div>
+        </div>
+    </div>
+</div>
+
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import Scan from '@/models/Scan';
+import Scanner from '@/components/Scanner.vue';
 import ScanItem from '@/components/ScanItem.vue';
 
-const scan = ref(new Scan())
 const scans = ref([])
-
+const scan = ref(new Scan())
 const destinations = ref(["Gent", "Antwerpen", "Brussel"])
+const showModal = ref(false)
+//TODO: TIME TO SCAN
 
 onMounted(() => {
   getScansAsync()
 })
 
 const getScansAsync = () => {
-  //TODO
+  //TODO: DB
   scans.value = [new Scan("111", "Gent", "A"),
                   new Scan("222", "Antwerpen", "B"),
                   new Scan("333", "Brussel", "C")]
 }
 
 const createScanAsync = () => {
+  //TODO: DB
+
   console.log(scan.value);
 
   scan.value = new Scan()
 }
 
+const receivedBarcodeText = (result) => {
+  //TODO: TIME TO SCAN
+  scan.value.barcode = result
+  closeModal()
+}
+
+const openModal = () => {
+  showModal.value = true;
+}
+
+const closeModal = () => {
+  showModal.value = false;
+}
 </script>
+
+<style scoped>
+.modal-body {
+    max-width: fit-dialog;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+

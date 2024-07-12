@@ -1,10 +1,18 @@
-{
-  // This file allows you to configure ESLint according to your project's needs, so that you
-  // can control the strictness of the linter, the plugins to use, and more.
+<template>
+  <StreamBarcodeReader @decode="handleBarcodeReceived" @loaded="onLoaded"></StreamBarcodeReader>
+</template>
 
-  // For more information about configuring ESLint, visit https://eslint.org/docs/user-guide/configuring/
+<script setup>
+import { StreamBarcodeReader } from "vue-barcode-reader";
+import { defineEmits, defineProps } from 'vue';
 
-  "root": true,
-  "extends": "eslint:recommended",
-  "rules": {}
+const props = defineProps({ onDecode: Function });
+
+//TODO: window width
+
+const emit = defineEmits(['decode']);
+
+const handleBarcodeReceived = (result) => {
+  emit('decode', result)
 }
+</script>
