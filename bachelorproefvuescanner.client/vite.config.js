@@ -46,6 +46,14 @@ export default defineConfig({
             '^/weatherforecast': {
                 target,
                 secure: false
+            },
+            '^/api/ping': {
+                target,
+                secure: false
+            },
+            '^/api/scans': {
+                target,
+                secure: false
             }
         },
         port: 5173,
