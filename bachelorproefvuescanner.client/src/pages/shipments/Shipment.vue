@@ -82,7 +82,7 @@ import Scan from '@/models/Scan';
 import Scanner from '@/components/Scanner.vue';
 import ScanItem from '@/components/ScanItem.vue';
 
-const scans = ref([])
+const scans = ref(null)
 const scan = ref(new Scan())
 const destinations = ref(["Gent", "Antwerpen", "Brussel"])
 const showModal = ref(false)
@@ -94,9 +94,17 @@ onMounted(() => {
 
 const getScansAsync = () => {
   //TODO: DB
+  
   scans.value = [new Scan("111", "Gent", "A"),
                   new Scan("222", "Antwerpen", "B"),
                   new Scan("333", "Brussel", "C")]
+/*
+  fetch('api/scans')
+    .then(r => r.json())
+    .then(json => {
+      console.log(json)
+      scans.value = json
+    })*/
 }
 
 const createScanAsync = () => {
