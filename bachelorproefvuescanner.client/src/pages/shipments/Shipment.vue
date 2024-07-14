@@ -56,31 +56,32 @@
       <tbody>
           <ScanItem v-for="scan in scans" :scan="scan" />
       </tbody>
-  </table>
+    </table>
 
-  <div v-if="showModal" class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Scan a barcode</h5>
-                <button type="button" class="close" @click="closeModal">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <Scanner @decode="receivedBarcodeText" />
+    <div v-if="showModal" class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Scan a barcode</h5>
+                    <button type="button" class="close" @click="closeModal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <Suspense>
+                        <Scanner @decode="receivedBarcodeText" />
+                    </Suspense>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineAsyncComponent } from 'vue';
 import Scan from '@/models/Scan';
-import Scanner from '@/components/Scanner.vue';
 import ScanItem from '@/components/ScanItem.vue';
+const Scanner = defineAsyncComponent(() => import('@/components/Scanner.vue'));
 
 const scans = ref(null)
 const scan = ref(new Scan())
