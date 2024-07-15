@@ -93,27 +93,29 @@ onMounted(() => {
   getScansAsync()
 })
 
-const getScansAsync = () => {
-  //TODO: DB
-  
-  scans.value = [new Scan("111", "Gent", "A"),
-                  new Scan("222", "Antwerpen", "B"),
-                  new Scan("333", "Brussel", "C")]
-/*
-  fetch('api/scans')
+const getScansAsync = async () => {
+  await fetch('api/scans')
     .then(r => r.json())
     .then(json => {
       console.log(json)
       scans.value = json
-    })*/
+    })
 }
 
-const createScanAsync = () => {
-  //TODO: DB
+const createScanAsync = async () => {
+  await fetch('/api/scans', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(scan.value)
+  });
 
   console.log(scan.value);
 
   scan.value = new Scan()
+  //TODO: TIME TO SCAN
+  await getScansAsync()
 }
 
 const receivedBarcodeText = (result) => {
