@@ -31,7 +31,9 @@
             <input type="text" v-model="scan.zone"  class="form-control" />
         </div>
 
-        <!--TODO: TIME TO SCAN-->
+        <div v-if="scanTime != 0">
+            <p>Time to scan barcode: {{ scanTime }} milliseconds</p>
+        </div>
 
         <!--Submit button--> 
         <div class="buttons d-flex justify-content-end mt-3">
@@ -87,7 +89,9 @@ const scans = ref(null)
 const scan = ref(new Scan())
 const destinations = ref(["Gent", "Antwerpen", "Brussel"])
 const showModal = ref(false)
-//TODO: TIME TO SCAN
+const startTime = ref()
+const endTime = ref()
+const scanTime = ref(0)
 
 onMounted(() => {
   getScansAsync()
@@ -114,18 +118,20 @@ const createScanAsync = async () => {
   console.log(scan.value);
 
   scan.value = new Scan()
-  //TODO: TIME TO SCAN
+  scanTime.value = 0
   await getScansAsync()
 }
 
 const receivedBarcodeText = (result) => {
-  //TODO: TIME TO SCAN
+  endTime.value = new Date()
+  scanTime.value = endTime.value - startTime.value
   scan.value.barcode = result
   closeModal()
 }
 
 const openModal = () => {
   showModal.value = true;
+  startTime.value = new Date();
 }
 
 const closeModal = () => {
