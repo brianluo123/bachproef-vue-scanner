@@ -65,7 +65,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Scan a barcode</h5>
-                    <button type="button" class="close" @click="closeModal">
+                    <button type="button" class="close d-flex justify-content-center" @click="closeModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -145,5 +145,17 @@ const closeModal = () => {
     margin-left: auto;
     margin-right: auto;
 }
-</style>
 
+h1 {
+  margin-top: 10px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+}
+    
+.modal-header .close {
+    margin-left: auto;
+}
+</style>

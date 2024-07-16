@@ -30,7 +30,7 @@ const toggleMenu = () => {
 
 <style scoped>
 .sidebar {
-    width: 300px;
+    width: 330px;
     height: 100%;
     background-color: #666;
     top: 0;
