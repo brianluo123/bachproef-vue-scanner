@@ -8,8 +8,6 @@ import { defineEmits, defineProps } from 'vue';
 
 const props = defineProps({ onDecode: Function });
 
-//TODO: window width
-
 const emit = defineEmits(['decode']);
 
 const handleBarcodeReceived = (result) => {
