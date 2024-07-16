@@ -158,4 +158,8 @@ h1 {
 .modal-header .close {
     margin-left: auto;
 }
+
+th {
+    font-weight: bold;
+}
 </style>

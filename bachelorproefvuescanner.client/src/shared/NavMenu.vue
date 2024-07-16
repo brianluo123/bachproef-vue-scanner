@@ -11,8 +11,12 @@
       </div>
     </div>
     <div v-if="showMenu">
-      <a href="#/" class="item">Home</a>
-      <a href="#/shipment" class="item">Shipment</a>
+      <a href="#/" class="item">
+        <span class="oi oi-home" aria-hidden="true"></span> &nbsp; Home
+      </a>
+      <a href="#/shipment" class="item">
+        <span class="oi oi-list" aria-hidden="true"></span> &nbsp; Shipment
+      </a>
     </div>
   </div>
 </template>
