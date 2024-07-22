@@ -15,11 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BachelorproefVueScanner.Per
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BachelorproefVueScanner.Domain", "BachelorproefVueScanner.Domain\BachelorproefVueScanner.Domain.csproj", "{5687AB71-A74F-4B67-9F1D-6BBAB8101AD3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D52B57F7-C6BD-470A-95C2-8735B866FC46}"
-	ProjectSection(SolutionItems) = preProject
-		staticwebapp.config.json = staticwebapp.config.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
